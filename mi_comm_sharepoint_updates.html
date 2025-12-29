@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IT Verstoring – Communicatie samenstellen</title>
+  <style>
+    :root { --accent:#3aa0d8; --panel-bg: rgba(255,255,255,0.08); --panel-border: rgba(255,255,255,0.18); }
+    html, body { height:100%; }
+    body {
+      margin:0; color:#eaf1f3; font-family: Segoe UI, system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: #24393d url('https://eu-prod.asyncgw.teams.microsoft.com/v1/objects/0-neu-d11-382c934195d57ff9942d899026d64a2f/views/original/Screenshot%202025-12-29%20120427.png') center / cover fixed no-repeat;
+    }
+    .page { max-width: 1080px; margin: 24px auto; padding: 0 16px; }
+    h1 { margin:0 0 8px; color:#eaf1f3; }
+    .muted { color:#c6d2d6; font-size:13px; }
+    .card { background: var(--panel-bg); border:1px solid var(--panel-border); border-radius:12px; padding:16px; margin-bottom:16px; backdrop-filter: blur(3px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    label { display:block; font-weight:600; margin-bottom:6px; color:#f0f5f6; }
+    select, input[type="text"], input[type="time"], button, textarea { padding:8px; border:1px solid rgba(255,255,255,0.22); border-radius:10px; font-size:14px; }
+    select, input[type="text"], input[type="time"] { height:40px; width:100%; background: rgba(255,255,255,0.12); color:#f6fbfd; }
+    textarea { width:100%; min-height:160px; resize:vertical; background: rgba(255,255,255,0.12); color:#f6fbfd; }
+    select option { color:#0d1416; background:#ffffff; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn { cursor:pointer; }
+    .btn-primary { background:#3aa0d8; color:#0d1416; border:none; height:40px; }
+    .btn-secondary { background: rgba(255,255,255,0.1); color:#eaf1f3; border:1px solid rgba(255,255,255,0.22); height:40px; }
+    .btn-success { background:#15a34a; color:#ffffff; border:none; height:40px; }
+    .summary { border-left:4px solid #3aa0d8; padding-left:12px; background: rgba(255,255,255,0.08); }
+    .small { height:34px; font-size:13px; }
+    .banner { border-left:4px solid #f59e0b; background: rgba(245, 158, 11, 0.12); padding:12px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>IT Verstoring – Communicatie samenstellen</h1>
+    <p class="muted">Selecteer per veld een optie. De samenvatting wordt automatisch opgebouwd en is te kopiëren of te downloaden.</p>
+
+    <div class="card">
+      <div class="grid">
+        <div>
+          <label for="updateType">Type bericht</label>
+          <select id="updateType" required>
+            <option value="">— Kies type —</option>
+            <option>Initiële melding</option>
+            <option>Tussentijdse update</option>
+            <option>Herstelmelding</option>
+          </select>
+        </div>
+        <div>
+          <label for="dienst">Naam van de dienst</label>
+          <select id="dienst" required>
+            <option value="">— Selecteer dienst —</option>
+            <option>ACRO-BUS</option>
+            <option>ACSM</option>
+            <option>ACSM LIFT INTERCOM</option>
+            <option>ADS FLIRT</option>
+            <option>AEOS TGB</option>
+            <option>AIRFIELD LIGHTING CONTROL & MONITORING SYSTEM (ALCMS)</option>
+            <option>Airnet</option>
+            <option>AIRPORT COMMUNITY APP</option>
+            <option>AMS</option>
+            <option>ASB2</option>
+            <option>ASPC</option>
+            <option>AVIAVOX AUTOMATISCHE OMROEP (OAI)</option>
+            <option>Azure Virtual Desktop (AVD)</option>
+            <option>BEDRIJFSTELEFONIE</option>
+            <option>BIOD</option>
+            <option>BlipTrack</option>
+            <option>C2000</option>
+            <option>CASPER</option>
+            <option>CASS (PureCloud)</option>
+            <option>CBS BADGECENTER</option>
+            <option>CISS</option>
+            <option>CMB</option>
+            <option>CUSSDOP</option>
+            <option>CUTEL</option>
+            <option>CUWI</option>
+            <option>DESIGO CC</option>
+            <option>DMC</option>
+            <option>DRIS</option>
+            <option>DTRS - TETRA</option>
+            <option>DTS</option>
+            <option>EES (European Entry Exit System)</option>
+            <option>E-VESTA</option>
+            <option>FIDS</option>
+            <option>FLIRT</option>
+            <option>FMS (Flow Measurement System)</option>
+            <option>GDS (Groundradar Display System)</option>
+            <option>GMI</option>
+            <option>GMS (Gate Management System)</option>
+            <option>GOVERMAXX</option>
+            <option>GREENWAVE</option>
+            <option>Grouptalk</option>
+            <option>HT8000</option>
+            <option>Hybride Vergaderen</option>
+            <option>IBRT</option>
+            <option>ICD</option>
+            <option>I-Fence</option>
+            <option>IMS</option>
+            <option>Indoordekking Odido Mobiele Telefonie</option>
+            <option>INTERCOM SYSTEM</option>
+            <option>IPM</option>
+            <option>IRIS</option>
+            <option>IT Webshop</option>
+            <option>Kantoor Automatisering</option>
+            <option>KENNISBANK</option>
+            <option>Kermit</option>
+            <option>Klivia</option>
+            <option>LHSP (LuchtHaven Status Paneel)</option>
+            <option>LIFTINTERCOMCENTRALE</option>
+            <option>LMS (Load Management Systeem)</option>
+            <option>Lumicast</option>
+            <option>Managed Laptop</option>
+            <option>MAXIMO</option>
+            <option>METCONSOLE</option>
+            <option>Netwerk</option>
+            <option>NOMOS ONLINE</option>
+            <option>NOTIFLY</option>
+            <option>Patchmanager</option>
+            <option>PaxControl</option>
+            <option>PME</option>
+            <option>PRIVIUM CONTROL PLATFORM</option>
+            <option>Radiocom</option>
+            <option>Randomizer</option>
+            <option>RMS</option>
+            <option>SCHIPHOL MAPS</option>
+            <option>SCHIPHOL MOBILE APP</option>
+            <option>SCHIPHOL TODAY</option>
+            <option>SCP (Siveillance Control Pro)</option>
+            <option>SELF SERVICE UNITS</option>
+            <option>SIMS</option>
+            <option>SSB - Self Service Boarding</option>
+            <option>SSBPC - Self Service Boarding Pass Control</option>
+            <option>SSL</option>
+            <option>SSPC - Self Service Passport Control</option>
+            <option>Staffpages</option>
+            <option>TENS360</option>
+            <option>Torpa</option>
+            <option>TRAKAWEB</option>
+            <option>TRS</option>
+            <option>TUNNELVEILIGHEID SYSTEEM-APPL</option>
+            <option>VDGS</option>
+            <option>Vesta</option>
+            <option>VOICELOGGING</option>
+            <option>WDD (WisselDeurenDienst)</option>
+            <option>WIFI Access</option>
+            <option>Wilbur</option>
+            <option>Xerox Printers</option>
+            <option>Xrays</option>
+          </select>
+        </div>
+        <div>
+          <label for="probleem">Probleem</label>
+          <select id="probleem" required>
+            <option value="">— Selecteer probleem —</option>
+            <option>Dienst niet beschikbaar</option>
+            <option>Langzame performance</option>
+            <option>Intermitterende fouten</option>
+            <option>Authenticatie/inloggen faalt</option>
+            <option>Netwerkverbinding verstoord</option>
+            <option>Leverancierstoring</option>
+            <option>Planned maintenance uitgelopen</option>
+          </select>
+        </div>
+        <div>
+          <label for="impact">Impact</label>
+          <select id="impact" required>
+            <option value="">— Selecteer impact —</option>
+            <option>Alle gebruikers</option>
+            <option>Specifieke afdeling(en)</option>
+            <option>Alleen interne medewerkers</option>
+            <option>Externe communicatie beïnvloed</option>
+            <option>Beperkt aantal gebruikers</option>
+            <option>Alleen Schiphol locatie</option>
+          </select>
+        </div>
+        <div>
+          <label for="actie">Genomen actie</label>
+          <select id="actie" required>
+            <option value="">— Selecteer actie —</option>
+            <option>Onderzoek gestart</option>
+            <option>Workaround beschikbaar gesteld</option>
+            <option>Leverancier ingeschakeld</option>
+            <option>Rollback uitgevoerd</option>
+            <option>Service herstart</option>
+            <option>Monitoring opgeschaald</option>
+            <option>Change gepauzeerd</option>
+          </select>
+        </div>
+        <div>
+          <label for="volgende">Volgende update (interval)</label>
+          <select id="volgende" required>
+            <option value="">— Kies interval —</option>
+            <option>30 minuten</option>
+            <option>60 minuten</option>
+            <option>90 minuten</option>
+            <option>120 minuten</option>
+          </select>
+        </div>
+        <div>
+          <label for="nextTime">Volgende update (exact tijd)</label>
+          <input type="time" id="nextTime" />
+          <p class="muted" id="nextTimeComputed">Wordt automatisch berekend op basis van het interval.</p>
+        </div>
+        <div>
+          <label for="kanaal">Kanaal</label>
+          <select id="kanaal">
+            <option value="">— Kies kanaal —</option>
+            <option>Teams</option>
+            <option>E-mail</option>
+            <option>Intranet</option>
+            <option>Statuspagina</option>
+            <option>Signal</option>
+          </select>
+        </div>
+        <div>
+          <label for="ticket" class="small">Incident/ticketnr (optioneel)</label>
+          <input id="ticket" type="text" class="small" placeholder="Bijv. MI-2025-1234"/>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <label for="tussentijdStatus">Tussentijdse update (status)</label>
+          <select id="tussentijdStatus">
+            <option value="">— Optioneel —</option>
+            <option>Onderzoek loopt</option>
+            <option>Workaround actief</option>
+            <option>Vendor engaged</option>
+            <option>Rollback bezig</option>
+            <option>Risicoanalyse afgerond</option>
+            <option>Monitoring aangescherpt</option>
+          </select>
+        </div>
+        <div>
+          <label for="hersteldMsg">Herstelbericht</label>
+          <select id="hersteldMsg">
+            <option value="">— Optioneel (bij hersteld) —</option>
+            <option>Dienst volledig hersteld</option>
+            <option>Root cause geïdentificeerd en verholpen</option>
+            <option>Workaround niet meer nodig</option>
+            <option>Extra monitoring actief, geen nieuwe incidenten</option>
+            <option>Postmortem/afsluitende rapportage volgt</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:12px">
+        <button type="button" class="btn-secondary btn" id="resetBtn">Reset</button>
+        <button type="button" class="btn-primary btn" id="copyBtn">Kopieer samenvatting</button>
+        <button type="button" class="btn-secondary btn" id="downloadBtn">Download .txt</button>
+      </div>
+    </div>
+
+    <div class="card summary" id="samenvatting">
+      <h2 style="margin-top:0;color:#eaf1f3">Samenvatting</h2>
+      <textarea id="summaryText" readonly>Nog geen keuzes gemaakt.</textarea>
+      <p class="muted">Tip: de tekst hierboven is direct te kopiëren/plakken in Teams, E-mail, Intranet, Statuspagina of Signal.</p>
+    </div>
+
+    <div class="card banner">
+      <strong>Reminder:</strong> registreer deze communicatie ook in de <em>OneNote</em> lijst (MI-logboek) met dienst, impact, tijdstempel en vervolgactie.
+    </div>
+  </div>
+
+  <script>
+    const fields = [
+      { id: 'updateType', label: 'Type bericht' },
+      { id: 'dienst',   label: 'Dienst' },
+      { id: 'probleem', label: 'Probleem' },
+      { id: 'impact',   label: 'Impact' },
+      { id: 'actie',    label: 'Actie' },
+      { id: 'volgende', label: 'Volgende update (interval)' },
+      { id: 'nextTime', label: 'Volgende update (exact tijd)' },
+      { id: 'kanaal',   label: 'Kanaal' },
+      { id: 'ticket',   label: 'Ticket' },
+      { id: 'tussentijdStatus', label: 'Tussentijdse update (status)' },
+      { id: 'hersteldMsg', label: 'Herstelbericht' }
+    ];
+
+    const summaryText = document.getElementById('summaryText');
+    const resetBtn    = document.getElementById('resetBtn');
+    const copyBtn     = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const nextTimeComputed = document.getElementById('nextTimeComputed');
+
+    function minutesFromInterval(val) {
+      const m = (val||'').match(/(\d+)/);
+      return m ? parseInt(m[1], 10) : null;
+    }
+
+    function computeNextTime() {
+      const intervalSel = document.getElementById('volgende').value;
+      const mins = minutesFromInterval(intervalSel);
+      if (mins) {
+        const d = new Date(Date.now() + mins*60000);
+        const hh = String(d.getHours()).padStart(2,'0');
+        const mm = String(d.getMinutes()).padStart(2,'0');
+        document.getElementById('nextTime').value = `${hh}:${mm}`;
+        nextTimeComputed.textContent = `Automatisch berekend: ${hh}:${mm} (over ${mins} min)`;
+      } else {
+        nextTimeComputed.textContent = 'Vul een interval of tijd in.';
+      }
+    }
+
+    function buildText() {
+      const values = {};
+      fields.forEach(f => values[f.id] = document.getElementById(f.id).value);
+
+      const selections = [];
+      // Basiselementen
+      if (values.updateType) selections.push(`- Type bericht: ${values.updateType}`);
+      if (values.dienst)     selections.push(`- Dienst: ${values.dienst}`);
+      if (values.probleem)   selections.push(`- Probleem: ${values.probleem}`);
+      if (values.impact)     selections.push(`- Impact: ${values.impact}`);
+      if (values.actie)      selections.push(`- Actie: ${values.actie}`);
+      if (values.volgende)   selections.push(`- Volgende update (interval): ${values.volgende}`);
+      if (values.nextTime)   selections.push(`- Volgende update (tijd): ${values.nextTime}`);
+      if (values.kanaal)     selections.push(`- Kanaal: ${values.kanaal}`);
+      if (values.ticket)     selections.push(`- Ticket: ${values.ticket}`);
+
+      // Contextafhankelijke velden
+      if (values.updateType === 'Tussentijdse update' && values.tussentijdStatus)
+        selections.push(`- Tussentijdse status: ${values.tussentijdStatus}`);
+
+      if (values.updateType === 'Herstelmelding' && values.hersteldMsg)
+        selections.push(`- Herstelbericht: ${values.hersteldMsg}`);
+
+      if (selections.length === 0) return 'Nog geen keuzes gemaakt.';
+
+      // Compacte lijn
+      const parts = [];
+      if (values.ticket)  parts.push(`#${values.ticket}`);
+      if (values.updateType) parts.push(values.updateType.toLowerCase());
+      if (values.dienst)  parts.push(values.dienst);
+      if (values.probleem && values.updateType !== 'Herstelmelding') parts.push(`probleem: ${values.probleem.toLowerCase()}`);
+      if (values.impact)  parts.push(`impact: ${values.impact.toLowerCase()}`);
+      if (values.actie)   parts.push(`actie: ${values.actie.toLowerCase()}`);
+      if (values.updateType === 'Tussentijdse update' && values.tussentijdStatus) parts.push(`status: ${values.tussentijdStatus.toLowerCase()}`);
+      if (values.updateType === 'Herstelmelding' && values.hersteldMsg) parts.push(`hersteld: ${values.hersteldMsg.toLowerCase()}`);
+
+      // Volgende update: geef zowel tijd als interval
+      if (values.nextTime || values.volgende) {
+        const seg = [];
+        if (values.nextTime) seg.push(`om ${values.nextTime}`);
+        if (values.volgende) seg.push(`(over ${values.volgende})`);
+        parts.push(`volgende update: ${seg.join(' ')}`);
+      }
+      if (values.kanaal) parts.push(`kanaal: ${values.kanaal.toLowerCase()}`);
+
+      const line = parts.length ? '⟶ ' + parts.join(' | ') : '';
+      return `Communicatiebericht IT verstoring\n\n${selections.join('\n')}` + (line ? `\n\n${line}` : '');
+    }
+
+    function render() { summaryText.value = buildText(); }
+
+    // Live render
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      el.addEventListener('change', () => { if (f.id==='volgende') computeNextTime(); render(); });
+      if (f.id === 'ticket') el.addEventListener('input', render);
+      if (f.id === 'nextTime') el.addEventListener('input', render);
+    });
+
+    // Reset
+    resetBtn.addEventListener('click', () => {
+      fields.forEach(f => { const el = document.getElementById(f.id); if (!el) return; if (el.tagName === 'SELECT') el.selectedIndex = 0; else el.value = ''; });
+      nextTimeComputed.textContent = 'Wordt automatisch berekend op basis van het interval.';
+      render();
+    });
+
+    // Kopieer (met fallback)
+    copyBtn.addEventListener('click', async () => {
+      summaryText.select();
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(summaryText.value);
+        } else { document.execCommand('copy'); }
+        copyBtn.textContent = 'Gekopieerd!';
+        setTimeout(() => copyBtn.textContent = 'Kopieer samenvatting', 2000);
+      } catch (e) {
+        alert('Kopiëren mislukt. Selecteer de tekst handmatig en kopieer (Ctrl/Cmd+C).');
+      }
+    });
+
+    // Download .txt
+    downloadBtn.addEventListener('click', () => {
+      const blob = new Blob([summaryText.value], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      const dienst = (document.getElementById('dienst').value || 'dienst').replace(/\s+/g,'_');
+      const ticket = (document.getElementById('ticket').value || 'incident').replace(/\s+/g,'_');
+      a.download = `it-verstoring-${ticket}-${dienst}.txt`;
+      a.href = URL.createObjectURL(blob);
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Init
+    computeNextTime();
+    render();
+  </script>
+</body>
+</html>
